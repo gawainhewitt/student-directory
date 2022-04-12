@@ -5,8 +5,8 @@ def input_students
   # create an empty array
   students = []
   # get the first name
-  name = gets.chomp
-  " while the name is not empty, repeat this code"
+  name = gets.strip
+  # while the name is not empty, repeat this code
   while !name.empty? do
     puts "what is your hobby?"
     hobby = gets.chomp
@@ -71,12 +71,10 @@ def print(students)
   existing_cohorts.each do |cohort, array|
     puts "Cohort: #{cohort.capitalize}"
     array.each do |student|
-      puts "We have student #{student[:name].capitalize} who's hobby is #{student[:hobby]}"
+      puts "We have student #{student[:name].capitalize} who's hobby is #{student[:hobby]}".center(100)
     end
     puts " "
   end
-
-  
 end
 
 def print_footer(names)
