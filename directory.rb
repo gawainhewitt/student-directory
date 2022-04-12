@@ -35,7 +35,11 @@ def input_students
     end
     # add the student hash to the array
     students << {name: name, hobby: hobby, cohort: cohort.to_sym}
-    puts "Now we have #{students.count} students"
+    statement = "Now we have #{students.count} student"
+    if students.length > 1
+      statement << "s"
+    end
+    puts statement
     # get another name from the user
     name = gets.chomp
   end
@@ -76,7 +80,11 @@ def print(students)
 end
 
 def print_footer(names)
-  puts "Overall, we have #{names.count} great students"
+  footer_text = "Overall, we have #{names.count} great student"
+  if names.length > 1
+    footer_text << "s"
+  end
+  puts footer_text
 end
 
 students = input_students
