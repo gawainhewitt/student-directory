@@ -50,14 +50,29 @@ end
 
 def print(students)
   idx = 0
+  existing_cohorts = {}
   while true
     if idx < students.length
-      puts "#{idx+1}. #{students[idx][:name]}, whos hobby is #{students[idx][:hobby]} (#{students[idx][:cohort]} cohort)".center(100)
+      if existing_cohorts[students[idx][:cohort]] == nil
+        existing_cohorts[students[idx][:cohort]] = []
+      end
+      existing_cohorts[students[idx][:cohort]].push({name: students[idx][:name], hobby: students[idx][:hobby]})
+      #puts existing_cohorts
+      #puts "#{idx+1}. #{students[idx][:name]}, whos hobby is #{students[idx][:hobby]} (#{students[idx][:cohort]} cohort)".center(100)      
       idx += 1
     else
       break
     end
   end
+  existing_cohorts.each do |cohort, array|
+    puts cohort
+    array.each do |student|
+      puts "#{student[:name]} who's hobby is #{student[:hobby]}"
+    end
+    puts " "
+  end
+
+  
 end
 
 def print_footer(names)
