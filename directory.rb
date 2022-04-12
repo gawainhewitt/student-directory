@@ -65,9 +65,9 @@ def print(students)
     end
   end
   existing_cohorts.each do |cohort, array|
-    puts cohort
+    puts "Cohort: #{cohort.capitalize}"
     array.each do |student|
-      puts "#{student[:name]} who's hobby is #{student[:hobby]}"
+      puts "We have student #{student[:name].capitalize} who's hobby is #{student[:hobby]}"
     end
     puts " "
   end
