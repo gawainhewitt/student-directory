@@ -53,27 +53,29 @@ def print_header
 end
 
 def print(students)
-  idx = 0
-  existing_cohorts = {}
-  while true
-    if idx < students.length
-      if existing_cohorts[students[idx][:cohort]] == nil
-        existing_cohorts[students[idx][:cohort]] = []
+  if students.length != 0
+    idx = 0
+    existing_cohorts = {}
+    while true
+      if idx < students.length
+        if existing_cohorts[students[idx][:cohort]] == nil
+          existing_cohorts[students[idx][:cohort]] = []
+        end
+        existing_cohorts[students[idx][:cohort]].push({name: students[idx][:name], hobby: students[idx][:hobby]})
+        #puts existing_cohorts
+        #puts "#{idx+1}. #{students[idx][:name]}, whos hobby is #{students[idx][:hobby]} (#{students[idx][:cohort]} cohort)".center(100)      
+        idx += 1
+      else
+        break
       end
-      existing_cohorts[students[idx][:cohort]].push({name: students[idx][:name], hobby: students[idx][:hobby]})
-      #puts existing_cohorts
-      #puts "#{idx+1}. #{students[idx][:name]}, whos hobby is #{students[idx][:hobby]} (#{students[idx][:cohort]} cohort)".center(100)      
-      idx += 1
-    else
-      break
     end
-  end
-  existing_cohorts.each do |cohort, array|
-    puts "Cohort: #{cohort.capitalize}"
-    array.each do |student|
-      puts "We have student #{student[:name].capitalize} who's hobby is #{student[:hobby]}".center(100)
+    existing_cohorts.each do |cohort, array|
+      puts "Cohort: #{cohort.capitalize}"
+      array.each do |student|
+        puts "We have student #{student[:name].capitalize} who's hobby is #{student[:hobby]}".center(100)
+      end
+      puts " "
     end
-    puts " "
   end
 end
 
@@ -81,6 +83,8 @@ def print_footer(names)
   footer_text = "Overall, we have #{names.count} great student"
   if names.length > 1
     footer_text << "s"
+  elsif names.length == 0
+    footer_text = "We do not have any students!"
   end
   puts footer_text
 end
