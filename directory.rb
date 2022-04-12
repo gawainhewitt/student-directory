@@ -28,7 +28,7 @@ def print(students)
   idx = 0
   while true
     if idx < students.length
-      puts "#{idx+1}. #{students[idx][:name]}, whos hobby is #{students[idx][:hobby]} (#{students[idx][:cohort]} cohort)"
+      puts "#{idx+1}. #{students[idx][:name]}, whos hobby is #{students[idx][:hobby]} (#{students[idx][:cohort]} cohort)".center(100)
       idx += 1
     else
       break
